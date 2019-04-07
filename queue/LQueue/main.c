@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "LQueue.c"
 #include "../head/LQueue.h"
 char get_first();
 int get_int();
@@ -38,7 +37,7 @@ int main(){
                         puts("\nthe queue is not empty\n");
                     break;
             case'C':if(GetHeadLQueue(&queue,&q)){
-                        type_data=tq->front->next->sign;  //µ¼³öÏàÓ¦µÄ±êÖ¾
+                        type_data=tq->front->next->sign;  //å¯¼å‡ºç›¸åº”çš„æ ‡å¿—
                         printf("\nthe head data is ");
                         LPrint(q);
                         printf("\n");
@@ -56,12 +55,12 @@ int main(){
                     switch(type){
                         case'A':printf("please enter the data: ");
                                 in=(int*)malloc(sizeof(int));
-                                ts=(type_node*)malloc(sizeof(type_node));  //´´½¨ÏàÓ¦±êÖ¾½áµã
+                                ts=(type_node*)malloc(sizeof(type_node));  //åˆ›å»ºç›¸åº”æ ‡å¿—ç»“ç‚¹
                                 tq->rear->next=ts;
                                 tq->rear=ts;
                                 *in=get_int();
                                 p=in;
-                                ts->sign='I';  //ÔÚ±êÖ¾¶ÓÁĞÖĞ¼ÓÈëÏàÓ¦±êÖ¾
+                                ts->sign='I';  //åœ¨æ ‡å¿—é˜Ÿåˆ—ä¸­åŠ å…¥ç›¸åº”æ ‡å¿—
                                 if(EnLQueue(&queue,p))
                                     printf("success\n");
                                 else
@@ -69,13 +68,13 @@ int main(){
                                 break;
                         case'B':printf("please enter the data: ");
                                 fl=(float*)malloc(sizeof(float));
-                                ts=(type_node*)malloc(sizeof(type_node));  //´´½¨ÏàÓ¦±êÖ¾½áµã
+                                ts=(type_node*)malloc(sizeof(type_node));  //åˆ›å»ºç›¸åº”æ ‡å¿—ç»“ç‚¹
                                 tq->rear->next=ts;
                                 tq->rear=ts;
 
                                 *fl=get_float();
                                 p=fl;
-                                ts->sign='F';  //ÔÚ±êÖ¾¶ÓÁĞÖĞ¼ÓÈëÏàÓ¦±êÖ¾
+                                ts->sign='F';  //åœ¨æ ‡å¿—é˜Ÿåˆ—ä¸­åŠ å…¥ç›¸åº”æ ‡å¿—
                                  if(EnLQueue(&queue,p))
                                     printf("success\n");
                                 else
@@ -83,12 +82,12 @@ int main(){
                                 break;
                         case'C':printf("please enter the data: ");
                                 du=(double*)malloc(sizeof(double));
-                                ts=(type_node*)malloc(sizeof(type_node));  //´´½¨±êÖ¾¶ÓÁĞ½áµã
+                                ts=(type_node*)malloc(sizeof(type_node));  //åˆ›å»ºæ ‡å¿—é˜Ÿåˆ—ç»“ç‚¹
                                 tq->rear->next=ts;
                                 tq->rear=ts;
                                 *du=get_double();
                                 p=du;
-                                ts->sign='D';  //ÔÚ±êÖ¾¶ÓÁĞÖĞ¼ÓÈëÏàÓ¦±êÖ¾
+                                ts->sign='D';  //åœ¨æ ‡å¿—é˜Ÿåˆ—ä¸­åŠ å…¥ç›¸åº”æ ‡å¿—
                                 if(EnLQueue(&queue,p))
                                     printf("success\n");
                                 else
@@ -96,12 +95,12 @@ int main(){
                                 break;
                         case'D':printf("please enter the data: ");
                                 ch=(char*)malloc(sizeof(char));
-                                ts=(type_node*)malloc(sizeof(type_node));  //´´½¨±êÖ¾¶ÓÁĞ½áµã
+                                ts=(type_node*)malloc(sizeof(type_node));  //åˆ›å»ºæ ‡å¿—é˜Ÿåˆ—ç»“ç‚¹
                                 tq->rear->next=ts;
                                 tq->rear=ts;
                                 *ch=get_first();
                                 p=ch;
-                                ts->sign='C';  //ÔÚ±êÖ¾¶ÓÁĞÖĞ¼ÓÈëÏàÓ¦±êÖ¾
+                                ts->sign='C';  //åœ¨æ ‡å¿—é˜Ÿåˆ—ä¸­åŠ å…¥ç›¸åº”æ ‡å¿—
                                 if(EnLQueue(&queue,p))
                                     printf("success\n");
                                 else
@@ -110,20 +109,20 @@ int main(){
                         default:puts("Enter Error!fail to add new data");
                     }
                     break;
-            case'F':if(DeLQueue(&queue)){  //³ö¶Ó
+            case'F':if(DeLQueue(&queue)){  //å‡ºé˜Ÿ
                         s=tq->front->next;
-                        tq->front->next=s->next;  //Í¬Ê±±êÖ¾¶ÓÁĞÒ²³ö¶Ó
+                        tq->front->next=s->next;  //åŒæ—¶æ ‡å¿—é˜Ÿåˆ—ä¹Ÿå‡ºé˜Ÿ
                         free(s);
                         printf("success\n");}
                     else
                         printf("the queue is empty!fail to delete data\n");
                     break;
             case'G':ClearLQueue(&queue);
-                    ClearLQueue(&tq);  //Çå¿Õ±êÖ¾¶ÓÁĞ
+                    ClearLQueue(&tq);  //æ¸…ç©ºæ ‡å¿—é˜Ÿåˆ—
                     printf("the queue is cleared\n");
                     break;
-            case'H':DestoryLQueue(&queue);  //´İ»Ù¶ÓÁĞ
-                    DestoryLQueue(&tq);  //Í¬Ê±´İ»Ù±êÖ¾¶ÓÁĞ
+            case'H':DestoryLQueue(&queue);  //æ‘§æ¯é˜Ÿåˆ—
+                    DestoryLQueue(&tq);  //åŒæ—¶æ‘§æ¯æ ‡å¿—é˜Ÿåˆ—
                     free(&st);
                     free(&ts);
                     printf("the queue is destroyed\n");
@@ -133,7 +132,7 @@ int main(){
                     break;
             case'A':printf("\nfront-> ");
                     type_data=tq->front->next->sign;
-                    TraverseLQueue(&queue,&LPrint);  //±éÀú²¢´òÓ¡ÓÎ±ê
+                    TraverseLQueue(&queue,&LPrint);  //éå†å¹¶æ‰“å°æ¸¸æ ‡
                     printf(" <-rear\n");
                     printf("length: %d\n",LengthLQueue(&queue));
                     break;
@@ -148,7 +147,7 @@ int main(){
     return 0;
 }
 
-char get_first(){  //»ñµÃµÚÒ»¸öÊäÈëµÄ×Ö·û£¬ÉáÆúÆäËû×Ö·û
+char get_first(){  //è·å¾—ç¬¬ä¸€ä¸ªè¾“å…¥çš„å­—ç¬¦ï¼Œèˆå¼ƒå…¶ä»–å­—ç¬¦
 	char ch;
 
 	ch=getchar();
@@ -158,7 +157,7 @@ char get_first(){  //»ñµÃµÚÒ»¸öÊäÈëµÄ×Ö·û£¬ÉáÆúÆäËû×Ö·û
 	return ch;
 }
 
-int get_int(){  //»ñµÃÕûÊıÒÔ¼°´¦Àí´íÎóÊäÈë
+int get_int(){  //è·å¾—æ•´æ•°ä»¥åŠå¤„ç†é”™è¯¯è¾“å…¥
 	int input;
 	char ch;
 
@@ -170,7 +169,7 @@ int get_int(){  //»ñµÃÕûÊıÒÔ¼°´¦Àí´íÎóÊäÈë
 
 	return input;
 }
-float get_float(){  //»ñµÃ¸¡µãÊıÒÔ¼°´¦Àí´íÎóÊäÈë
+float get_float(){  //è·å¾—æµ®ç‚¹æ•°ä»¥åŠå¤„ç†é”™è¯¯è¾“å…¥
 	float input;
 	char ch;
 
@@ -182,7 +181,7 @@ float get_float(){  //»ñµÃ¸¡µãÊıÒÔ¼°´¦Àí´íÎóÊäÈë
 
 	return input;
 }
-double get_double(){  //»ñµÃË«¸¡µãĞÍÊı¾İÒÔ¼°´¦Àí´íÎóÊäÈë
+double get_double(){  //è·å¾—åŒæµ®ç‚¹å‹æ•°æ®ä»¥åŠå¤„ç†é”™è¯¯è¾“å…¥
 	double input;
 	char ch;
 
